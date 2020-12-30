@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+                <COMMAND>
+                    <TYPE>OMPREQ</TYPE>
+                    <customer_msisdn>'.$request->phone.'</customer_msisdn>
+                    <merchant_msisdn>77919173</merchant_msisdn>
+                    <api_username>JOFEDIGITAL</api_username>
+                    <api_password>DIGITAL@9</api_password>
+                    <amount>100</amount>
+                    <PROVIDER>101</PROVIDER>
+                    <PROVIDER2>101</PROVIDER2>
+                    <PAYID>12</PAYID>
+                    <PAYID2>12</PAYID2>
+                    <otp>'.$request->otp.'</otp>
+                    <reference_number>789233</reference_number>
+                    <ext_txn_id>201500068544</ext_txn_id>
+                </COMMAND>

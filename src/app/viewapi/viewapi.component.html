@@ -1,0 +1,36 @@
+<br><br>
+<div class="corps">
+
+
+<table class="tb" border="3">
+  <tr class="info">
+
+    <td class=" text-center">Designation</td>
+    <td class=" text-center">Logo</td>
+     <td class=" text-center"> Modifier </td>
+    <td class=" text-center">Supprimer</td>
+
+  </tr>
+
+  <tr class="ligne" *ngFor="let ap of api">
+  <td class=" text-center">{{ap.designation}}</td>
+  <td class=" text-center"><img [src]="ap.logo" style="width:50px;height:50px;"  /></td>
+  <td class=" text-center"><button class="btn btn-success" (click)="edit(ap)">Modifier</button></td>
+  <td class=" text-center"><button class="btn btn-danger" (click)="delete(ap)">Supprimer</button></td>
+
+</tr>
+</table>
+<br><br>
+
+<div >
+  <table>
+    <tr>
+      <td><a [routerLink]="['/']" class=" btn btn-primary">Ajouter une nouvelle api</a></td>
+      <td>  <a [routerLink]="['/apimenu']" class=" btn btn-primary">Menu</a></td>
+    </tr>
+  </table>
+
+
+</div>
+
+</div>

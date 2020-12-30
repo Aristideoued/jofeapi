@@ -1,0 +1,126 @@
+
+
+.rounded {
+    border-radius: 1rem;
+}
+
+.nav-pills .nav-link {
+    color: #555;
+}
+
+.nav-pills .nav-link.active {
+    color: white;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+.corps{
+   background-color:#FFF8DC;
+
+}
+.bg-white{
+
+  border-radius: 20px;
+  border: 4px double #cccccc;
+
+}
+.card-header{
+   background-color: black;
+   display: inline-block;
+   border-radius: 10px;
+   border: 4px double #cccccc;
+   width: 450px;
+}
+.container {
+  margin-left: 250px;
+  width: 450px;
+}
+.tx{
+  margin-left: 50px;
+  color: white;
+  font-family: "Gill Sans", sans-serif;
+}
+
+.total{
+  height: 150px;
+  background-color: #ffA500;
+
+
+border-radius: 10px;
+border: 4px double #cccccc;
+}
+
+.totaltext{
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 0px;
+  font-family: "Gill Sans", sans-serif;
+}
+.panier_image{
+  text-align: center;
+  padding-top: 10px;
+  margin-left:   165px;
+  width: 55px;
+  height: 50px;
+  margin-top: 10px;
+}
+.h5j{
+  text-align: center;
+  font-family: "Gill Sans", sans-serif;
+  margin-top: 15px;
+  color: white;
+}
+.pb-2{
+  font-family: "Gill Sans", sans-serif;
+}
+h6{
+  font-family: "Gill Sans", sans-serif;
+  color: white;
+}
+
+label{
+    color: white;
+}
+
+.visa_image{
+  width: 50px;
+  height: 30px;
+}
+.mobil_image{
+  width: 95px;
+  height: 48px;
+}
+.paypal_image{
+  width: 50px;
+  height: 30px;
+}
+.OrangeForm{
+
+}
+
+.btns{
+  background-color: #DC3545;
+  display: inline-block;
+
+border-radius: 10px;
+border: 4px double #cccccc;
+color: #eeeeee;
+
+font-size: 30px;
+padding: 4px;
+width: 110px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+cursor: pointer;
+
+}
+.btns:hover {
+    background-color: blue;
+  }
