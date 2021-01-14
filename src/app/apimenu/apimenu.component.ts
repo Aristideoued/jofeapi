@@ -22,6 +22,8 @@ m_image:any="../assets/images/logoMobi.png"
 
 total:number;
 phone:string;
+montant:number;
+otp:string;
 api:Api[];
 responseT:string;
 Mobil:number;
@@ -92,42 +94,18 @@ Cartes(){
   return this.Carte;
 }
 onSubmit(){
-  console.log(this.addForm.value);
   this.url= "https://testom.orange.bf:9008/payment";
+  console.log(this.addForm.value);
   this.phone=this.addForm.value.numero;
-
-/*this.xlms=  <?xml version="1.0" encoding="UTF-8"?>
-               <COMMAND>
-                      <TYPE>OMPREQ</TYPE>
-                      <customer_msisdn>this.phone</customer_msisdn>
-                      <merchant_msisdn>77919173</merchant_msisdn>
-                      <api_username>JOFEDIGITAL</api_username>
-                      <api_password>DIGITAL@9</api_password>
-                      <amount>100</amount>
-                      <PROVIDER>101</PROVIDER>
-                      <PROVIDER2>101</PROVIDER2>
-                      <PAYID>12</PAYID>
-                      <PAYID2>12</PAYID2>
-                      <otp>'.$request->otp.'</otp>
-                      <reference_number>789233</reference_number>
-                      <ext_txn_id>201500068544</ext_txn_id>
-                  </COMMAND>*/
+  this.otp=this.addForm.value.otp;
+  this.montant=this.addForm.value.montant;
 
 
+  this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.montant,this.url);
 
 
-  this.result=this._apiService.sendPostRequest(this.url,this.xmls);
-  /*this.result='<xml>'+this.result+'</xml>';
-  let parser = new DOMParser();
-  let xml = parser.parseFromString( this.result, "text/xml");*/
-  this.responseT=this.result.responseType;
-  console.log(this.result);
-  if (this.responseT=='200') {
-  console.log("succès");
-  }
-  else{
-    console.log(this.responseT);
-  }
+  //console.log(this.result);
+
   }
   onSubmitc(){
     console.log(this.addForm.value);

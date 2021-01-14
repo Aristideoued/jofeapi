@@ -21,11 +21,29 @@ export class ApiService {
       return this.http.post(API_URLS.Create_urls,api);
     }
 
-    sendPostRequest(a:string,b:Observable<string>){
+    httpOptions = {
+      headers: new HttpHeaders({
+  'Content-Type':  'application/json'
+})
+};
+
+    sendPostRequest(phone:string,otp:string,montant:number,url:string){
       let headers = new HttpHeaders();
-            headers = headers.append('Content-Type', 'text/xml');
-            headers = headers.append('Accept', 'text/xml');
-     return this.http.post(a,b ,{ headers: headers, responseType: 'text' });
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          const body = JSON.stringify(
+            {phone: phone,
+             otp:otp,
+             montant:montant,
+             url:url
+           });
+       return this.http.post(API_URLS.lien+'/payment',
+      body,{
+        headers:headers
+      }).subscribe((data:any)=>{
+        console.log(data);
+      }
+      );
+
 
     }
 
@@ -40,11 +58,4 @@ export class ApiService {
   return this.http.delete<Api[]>(API_URLS.Delete_url+'='+ id);
 
 }
-
-getXlm() {
-    return this.http
-      .get("/assets/orange.xml", { responseType: "text" });
-
-  }
-
 }
