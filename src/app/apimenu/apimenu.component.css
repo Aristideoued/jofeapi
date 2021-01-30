@@ -11,6 +11,28 @@
 .nav-pills .nav-link.active {
     color: white;
 }
+#i {
+  animation: cssAnimation 0s 5s forwards;
+  visibility: visible;
+}
+#s {
+  animation: cssAnimation 0s 5s forwards;
+  visibility: visible;
+}
+#u {
+  animation: cssAnimation 0s 5s forwards;
+  visibility: visible;
+}
+
+#nt {
+
+  animation: cssAnimation 0s 5s forwards;
+  visibility: visible;
+}
+
+@keyframes cssAnimation {
+  to   { visibility:hidden ; }
+}
 
 input[type="radio"] {
     margin-right: 5px;
@@ -20,7 +42,7 @@ input[type="radio"] {
     font-weight: bold;
 }
 .corps{
-   background-color:#FFF8DC;
+   background-color:#000080;
 
 }
 .bg-white{
@@ -32,13 +54,16 @@ input[type="radio"] {
 .card-header{
    background-color: black;
    display: inline-block;
-   border-radius: 10px;
-   border: 4px double #cccccc;
+   border-radius: 40px;
+   border: 2px double #cccccc;
    width: 450px;
 }
+.haut{
+  background-color: blue;
+}
 .container {
-  margin-left: 250px;
-  width: 450px;
+  margin-left: 30px;
+  width: 300px;
 }
 .tx{
   margin-left: 50px;
@@ -51,7 +76,7 @@ input[type="radio"] {
   background-color: #ffA500;
 
 
-border-radius: 10px;
+border-radius: 20px;
 border: 4px double #cccccc;
 }
 

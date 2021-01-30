@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ApiService {
-
+rsp:any
   constructor(private http:HttpClient) { }
     getApi(){
       return this.http.get(API_URLS.Api_URLS);
@@ -39,10 +39,38 @@ export class ApiService {
        return this.http.post(API_URLS.lien+'/payment',
       body,{
         headers:headers
+      }).subscribe((res:Response)=>{
+        this.rsp=res;
+        //console.log(this.rsp)
+      }
+      );
+
+
+    }
+    res(){
+      return this.rsp;
+    }
+    sendPostRequestCard(username:string,cardNumber:string,dateexM:number,dateexY:number,cvv:string,montant:number){
+
+      let headers = new HttpHeaders();
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          const body = JSON.stringify(
+            {username: username,
+             cardNumber:cardNumber,
+             dateexM:dateexM,
+             dateexY:dateexY,
+             cvv:cvv,
+             montant:montant
+           });
+       return this.http.post(API_URLS.lien+'/cardPayment',
+      body,{
+        headers:headers
       }).subscribe((data:any)=>{
         console.log(data);
       }
       );
+
+
 
 
     }

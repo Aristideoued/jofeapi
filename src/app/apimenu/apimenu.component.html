@@ -1,6 +1,7 @@
 <!-- [style.background-image]= "'url(../assets/images/back.jpg)'" -->
-<div class="corps" >
+  <div class="corps" >
     <div class="container py-5">
+
 
           <!-- For demo purpose -->
 
@@ -8,16 +9,29 @@
 
     <div class="col-lg-6 mx-auto">
 
-    <div class="card ">
+
     <div class="card-header">
+
     <div class="total">
     <img [src]="panier_image"  class="panier_image"/>
     <h5 class="totaltext">
     Total à payer :  {{total}} Fcfa </h5>                        <!-- Credit card form tabs -->
     </div>
-
+    <div *ngIf="Message_type=='s' " class="alert alert-success" role="alert" id="s">
+    Paiement effectué avec succès!
+  </div>
+  <div *ngIf="Message_type=='i'" class="alert alert-danger" role="alert" id="i">
+  Paiement non effectué, OTP invalide!
+  </div>
+  <div *ngIf="Message_type=='nt' " class="alert alert-danger" role="alert" id="nt">
+  Paiement non effectué, numero incorrect ou non compatible avec le OTP!
+  </div>
+  <div *ngIf="Message_type=='u'" class="alert alert-danger" role="alert" id="u">
+  Paiement non effectué, OTP deja utilisé!
+  </div>
     <h3 class="tx"><i>
           Choisissez le mode de paiement</i></h3>
+
         <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
 
             <!-- Credit card form tabs -->
@@ -71,10 +85,11 @@
         <div  *ngIf="Carte==1 && Paypal==0 && Mobil==0 && Mobi==0;"
                id="credit-card"
                class="tab-pane fade show active pt-3">
-            <form role="form">
+            <form  [formGroup]="addForm2" role="form">
                 <div class="form-group"> <label for="username">
                         <h6>Nom complet du propriétaire de la carte</h6>
                     </label> <input type="text" name="username"
+                                    formControlName="username"
                                     placeholder="nom complet"
                                     required class="form-control "> </div>
                 <div class="form-group"> <label for="cardNumber">
@@ -82,6 +97,7 @@
                     </label>
                     <div class="input-group"> <input type="text"
                                                      name="cardNumber"
+                                                     formControlName="cardNumber"
                                                      placeholder="numero de la carte"
                                                      class="form-control " required>
                         <div class="input-group-append">
@@ -100,9 +116,13 @@
                     <div class="input-group">
                       <input type="number"
                              placeholder="MM"
-                             name="" class="form-control"
+                             name="dateexM"
+                             formControlName="dateexM"
+                             class="form-control"
                              required> <input type="number"
-                             placeholder="YY" name=""
+                             placeholder="YY" name="dateexY"
+
+                             formControlName="dateexY"
                              class="form-control"
                              required> </div>
                 </div>
@@ -114,14 +134,27 @@
                         <h6>CVV <i class="fa fa-question-circle d-inline"></i>
                          </h6>
                     </label> <input type="text"
+                                     name="cvv"
+                                     formControlName="cvv"
                                      required
                                      class="form-control">
                                    </div>
                         </div>
+                        <div class="form-group">
+                          <input type="hidden"
+                           class="form-control"
+                           formControlName="montant"
+                            name="montant"
+                            [(ngModel)]="total"
+                          >
+
+                        </div>
+
                     </div>
                     <div class="card-footer">
                       <button type="button"
-                              class="subscribe btn btn-success btn-block shadow-sm"> <i>Payez {{total}} Fcfa</i>  </button></div>
+                              class="subscribe btn btn-success btn-block shadow-sm"
+                              (click)="CardPayment()"> <i>Payez {{total}} Fcfa</i>  </button></div>
                 </form>
             </div>
         </div> <!-- End -->
@@ -149,7 +182,7 @@
                  Votre numero  est obligatoire
              </div>
              <div class="alert alert-danger" *ngIf="addForm.get('numero').hasError('pattern')">
-          Veuillez respecter le format :11 11 11 11 </div>
+          Veuillez respecter le format :11111111 </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Numero</label>
                       <input type="text"
@@ -158,7 +191,7 @@
                        placeholder="Entrez votre numero"
                        formControlName="numero"
                         name="numero"
-                        pattern="^\d{2} \d{2} \d{2} \d{2}$">
+                        pattern="^\d{2}\d{2}\d{2}\d{2}$">
                     </div>
                     <div class="alert alert-danger"
       *ngIf="addForm.get('otp').hasError('required') && addForm.get('otp').touched">
@@ -262,7 +295,7 @@
 
           <h5 class="h5j"><i>Paiement securisé ,fourni par : <a href="https://www.jofedigitale.com/">Jo'Fé Digital</a></i></h5>
         </div>
-              </div>
+
           </div>
           </div>
       </div>

@@ -18,8 +18,9 @@ panier_image:any="../assets/images/pan.png"
 paypal_image:any="../assets/images/Paypal.png"
 mobil_image:any="../assets/images/om.png"
 visa_image:any="../assets/images/visa.png"
-m_image:any="../assets/images/logoMobi.png"
-
+m_image:any="../assets/images/moov.png"
+Message_type:string="";
+rps:any;
 total:number;
 phone:string;
 montant:number;
@@ -42,19 +43,29 @@ constructor(private formBuilder:FormBuilder,
 
 }
  addForm:FormGroup;
+ addForm2:FormGroup;
   ngOnInit(): void {
-this.total=0;
+this.total=100;
 this.addForm=this.formBuilder.group({
 numero:['',[Validators.required,Validators.maxLength(8)]],
 otp:['',[Validators.required,Validators.maxLength(6)]],
 montant:['',[Validators.required]]
-
+});
+this.addForm2=this.formBuilder.group({
+username:['',[Validators.required]],
+cardNumber:['',[Validators.required]],
+dateexM:['',[Validators.required]],
+dateexY:['',[Validators.required]],
+cvv:['',[Validators.required]],
+montant:['',[Validators.required]]
 
 });
+
 this._apiService.getApi().subscribe((data:Api[])=>{
        this.api=data;
 
       });
+
 
   }
    xmlToString(xmlData) {
@@ -103,12 +114,33 @@ onSubmit(){
 
   this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.montant,this.url);
 
+  this.rps= this._apiService.res();
+  console.log(this.rps.Message);
+if(this.rps.Message=="succès"){
+  this.Message_type="s"
 
-  //console.log(this.result);
+}
+else if(this.rps.Message=="utilisé"){
+  this.Message_type="u"
+  //alert("Paiement non effectué , OTP deja utilisé")
+}
+else if(this.rps.Message=="non trouvé"){
+  this.Message_type="nt"
+  //alert("Paiement non effectué, numero incorrect ou non compatible avec le OTP")
+}
+if(this.rps.Message=="invalide"){
+  this.Message_type="i"
 
-  }
+}
+
+  return this.Message_type;}
+
   onSubmitc(){
     console.log(this.addForm.value);
 
+    }
+  CardPayment(){
+      console.log(this.addForm2.value);
+        this.result=this._apiService.sendPostRequestCard(this.addForm2.value.username,this.addForm2.value.cardNumber,this.addForm2.value.dateexM,this.addForm2.value.dateexY,this.addForm2.value.cvv,this.addForm2.value.montant);
     }
 }
