@@ -19,8 +19,9 @@ paypal_image:any="../assets/images/Paypal.png"
 mobil_image:any="../assets/images/om.png"
 visa_image:any="../assets/images/visa.png"
 m_image:any="../assets/images/moov.png"
-Message_type:string="";
+Message_type:string;
 rps:any;
+notification:boolean=false;
 total:number;
 phone:string;
 montant:number;
@@ -46,6 +47,7 @@ constructor(private formBuilder:FormBuilder,
  addForm2:FormGroup;
   ngOnInit(): void {
 this.total=100;
+this.Message_type="";
 this.addForm=this.formBuilder.group({
 numero:['',[Validators.required,Validators.maxLength(8)]],
 otp:['',[Validators.required,Validators.maxLength(6)]],
@@ -111,29 +113,52 @@ onSubmit(){
   this.otp=this.addForm.value.otp;
   this.montant=this.addForm.value.montant;
 
+  this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.montant,this.url).subscribe((res:Response)=>{
+    this.rps=res;
+    this.Message_type=this.rps.Message
+    this.notification=true;
+    console.log(this.Message_type)
+  }
+  );
 
-  this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.montant,this.url);
 
-  this.rps= this._apiService.res();
-  console.log(this.rps.Message);
-if(this.rps.Message=="succès"){
-  this.Message_type="s"
+  //console.log(this.result);
+
+  /*if(this.rps.Message=="succès"){
+    this.Message_type="s"
+    this.notification=true;
+  }
+  else if(this.rps.Message=="utilisé"){
+    this.Message_type="u";
+    this.notification=true;
+    //alert("Paiement non effectué , OTP deja utilisé")
+  }
+  else if(this.rps.Message=="non trouvé"){
+    this.Message_type="nt";
+    this.notification=true;
+    //alert("Paiement non effectué, numero incorrect ou non compatible avec le OTP")
+  }
+  else if(this.rps.Message=="invalide"){
+    this.Message_type="i";
+    this.notification=true;
+
+  }
+  else if(this.rps.Message=="Echec de connexion"){
+      this.Message_type="c";
+      this.notification=true;
+  }*/
+
+    return this.Message_type;
+
+//console.log(this.Message_type)
 
 }
-else if(this.rps.Message=="utilisé"){
-  this.Message_type="u"
-  //alert("Paiement non effectué , OTP deja utilisé")
-}
-else if(this.rps.Message=="non trouvé"){
-  this.Message_type="nt"
-  //alert("Paiement non effectué, numero incorrect ou non compatible avec le OTP")
-}
-if(this.rps.Message=="invalide"){
-  this.Message_type="i"
 
-}
 
-  return this.Message_type;}
+
+
+
+
 
   onSubmitc(){
     console.log(this.addForm.value);

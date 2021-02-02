@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import{FormsModule} from '@angular/forms';
 import{ReactiveFormsModule} from '@angular/forms';
-import { UabComponent } from './uab/uab.component';
 import { ViewapiComponent } from './viewapi/viewapi.component';
 import { ApiComponent } from './api/api.component';
 import { ApimenuComponent } from './apimenu/apimenu.component';
@@ -19,9 +18,7 @@ const routes: Routes = [
       {     path:'apimenu',
             component:ApimenuComponent
           },
-          {     path:'uab',
-                component:UabComponent
-              },
+        
 
 
   {     path:'viewapi',

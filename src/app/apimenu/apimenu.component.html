@@ -1,145 +1,206 @@
 <!-- [style.background-image]= "'url(../assets/images/back.jpg)'" -->
   <div class="corps" >
-    <div class="container py-5">
+    <table>
+      <tr>
+        <td>  <div class="container py-5">
 
 
-          <!-- For demo purpose -->
+                <!-- For demo purpose -->
 
-    <div class="row">
+          <div class="row">
 
-    <div class="col-lg-6 mx-auto">
+          <div class="col-lg-6 mx-auto">
 
 
-    <div class="card-header">
+          <div class="card-header">
 
-    <div class="total">
-    <img [src]="panier_image"  class="panier_image"/>
-    <h5 class="totaltext">
-    Total à payer :  {{total}} Fcfa </h5>                        <!-- Credit card form tabs -->
-    </div>
-    <div *ngIf="Message_type=='s' " class="alert alert-success" role="alert" id="s">
-    Paiement effectué avec succès!
-  </div>
-  <div *ngIf="Message_type=='i'" class="alert alert-danger" role="alert" id="i">
-  Paiement non effectué, OTP invalide!
-  </div>
-  <div *ngIf="Message_type=='nt' " class="alert alert-danger" role="alert" id="nt">
-  Paiement non effectué, numero incorrect ou non compatible avec le OTP!
-  </div>
-  <div *ngIf="Message_type=='u'" class="alert alert-danger" role="alert" id="u">
-  Paiement non effectué, OTP deja utilisé!
-  </div>
-    <h3 class="tx"><i>
-          Choisissez le mode de paiement</i></h3>
+          <div class="total">
+          <img [src]="panier_image"  class="panier_image"/>
+          <h5 class="totaltext">
+          Total à payer :  {{total}} Fcfa </h5>                        <!-- Credit card form tabs -->
+          </div>
 
-        <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+          <h3 class="tx"><i>
+                Choisissez le mode de paiement</i></h3>
 
-            <!-- Credit card form tabs -->
-            <ul role="tablist"
-                class="nav bg-light nav-pills rounded nav-fill mb-3">
-                <li class="nav-item">
-                  <!--<a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> -->
-                <button class="btns "
-                         type="button"
-                         name="button"
-                         (click)="Cartes()">
-                         <img [src]="visa_image"
-                         class="mobil_image"/></button></li>
-                         <li class="nav-item">
-                           <button class="btns "
-                                   type="button"
-                                   name="button"
-                                   (click)="Mobils()">
-                                   <img [src]="mobil_image"
-                                   class="mobil_image"/></button>
-                           <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
+              <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+
+                  <!-- Credit card form tabs -->
+                  <ul role="tablist"
+                      class="nav bg-light nav-pills rounded nav-fill mb-3">
+                      <li class="nav-item">
+                        <!--<a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> -->
+                      <button class="btns "
+                               type="button"
+                               name="button"
+                               (click)="Cartes()">
+                               <img [src]="visa_image"
+                               class="mobil_image"/></button></li>
+                               <li class="nav-item">
+                                 <button class="btns "
+                                         type="button"
+                                         name="button"
+                                         (click)="Mobils()">
+                                         <img [src]="mobil_image"
+                                         class="mobil_image"/></button>
+                                 <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
 
 
 
-            </ul>
-            <ul role="tablist"
-                class="nav bg-light nav-pills rounded nav-fill mb-6">
-                <li class="nav-item">
-                  <!--<a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a>-->
-                  <button class="btns "
-                          type="button"
-                          name="button"
-                          (click)="Paypals()">
-                          <img [src]="paypal_image"
-                          class="mobil_image"/></button></li>
+                  </ul>
+                  <ul role="tablist"
+                      class="nav bg-light nav-pills rounded nav-fill mb-6">
+                      <li class="nav-item">
+                        <!--<a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a>-->
+                        <button class="btns "
+                                type="button"
+                                name="button"
+                                (click)="Paypals()">
+                                <img [src]="paypal_image"
+                                class="mobil_image"/></button></li>
 
-                <li class="nav-item">
-                  <button class="btns "
-                          type="button"
-                          name="button"
-                          (click)="Mobic()" >
-                          <img [src]="m_image"
-                          class="mobil_image"/></button>
-                  <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
+                      <li class="nav-item">
+                        <button class="btns "
+                                type="button"
+                                name="button"
+                                (click)="Mobic()" >
+                                <img [src]="m_image"
+                                class="mobil_image"/></button>
+                        <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
 
-                </ul>
-        </div> <!-- End -->
-        <!-- Credit card form content -->
-        <div class="tab-content">
-        <!-- credit card info-->
-        <div  *ngIf="Carte==1 && Paypal==0 && Mobil==0 && Mobi==0;"
-               id="credit-card"
-               class="tab-pane fade show active pt-3">
-            <form  [formGroup]="addForm2" role="form">
-                <div class="form-group"> <label for="username">
-                        <h6>Nom complet du propriétaire de la carte</h6>
-                    </label> <input type="text" name="username"
-                                    formControlName="username"
-                                    placeholder="nom complet"
-                                    required class="form-control "> </div>
-                <div class="form-group"> <label for="cardNumber">
-                        <h6>Numero de la carte</h6>
-                    </label>
-                    <div class="input-group"> <input type="text"
-                                                     name="cardNumber"
-                                                     formControlName="cardNumber"
-                                                     placeholder="numero de la carte"
-                                                     class="form-control " required>
-                        <div class="input-group-append">
-                          <span class="input-group-text text-muted">
-                            <i class="fab fa-cc-visa mx-1"></i>
-                             <i class="fab fa-cc-mastercard mx-1">
-                             </i> <i class="fab fa-cc-amex mx-1"></i>
-                           </span> </div>
-                    </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="form-group"> <label><span class="hidden-xs">
-                            <h6>Date d'expiration</h6>
-                        </span></label>
-                    <div class="input-group">
-                      <input type="number"
-                             placeholder="MM"
-                             name="dateexM"
-                             formControlName="dateexM"
-                             class="form-control"
-                             required> <input type="number"
-                             placeholder="YY" name="dateexY"
+                      </ul>
+              </div> <!-- End -->
+              <!-- Credit card form content -->
+              <div class="tab-content">
+              <!-- credit card info-->
+              <div  *ngIf="Carte==1 && Paypal==0 && Mobil==0 && Mobi==0;"
+                     id="credit-card"
+                     class="tab-pane fade show active pt-3">
+                  <form  [formGroup]="addForm2" role="form">
+                      <div class="form-group"> <label for="username">
+                              <h6>Nom complet du propriétaire de la carte</h6>
+                          </label> <input type="text" name="username"
+                                          formControlName="username"
+                                          placeholder="nom complet"
+                                          required class="form-control "> </div>
+                      <div class="form-group"> <label for="cardNumber">
+                              <h6>Numero de la carte</h6>
+                          </label>
+                          <div class="input-group"> <input type="text"
+                                                           name="cardNumber"
+                                                           formControlName="cardNumber"
+                                                           placeholder="numero de la carte"
+                                                           class="form-control " required>
+                              <div class="input-group-append">
+                                <span class="input-group-text text-muted">
+                                  <i class="fab fa-cc-visa mx-1"></i>
+                                   <i class="fab fa-cc-mastercard mx-1">
+                                   </i> <i class="fab fa-cc-amex mx-1"></i>
+                                 </span> </div>
+                          </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-8">
+                      <div class="form-group"> <label><span class="hidden-xs">
+                                  <h6>Date d'expiration</h6>
+                              </span></label>
+                          <div class="input-group">
+                            <input type="number"
+                                   placeholder="MM"
+                                   name="dateexM"
+                                   formControlName="dateexM"
+                                   class="form-control"
+                                   required> <input type="number"
+                                   placeholder="YY" name="dateexY"
 
-                             formControlName="dateexY"
-                             class="form-control"
-                             required> </div>
-                </div>
+                                   formControlName="dateexY"
+                                   class="form-control"
+                                   required> </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="form-group mb-4">
+                        <label data-toggle="tooltip"
+                               title="Three digit CV code on the back of your card">
+                              <h6>CVV <i class="fa fa-question-circle d-inline"></i>
+                               </h6>
+                          </label> <input type="text"
+                                           name="cvv"
+                                           formControlName="cvv"
+                                           required
+                                           class="form-control">
+                                         </div>
+                              </div>
+                              <div class="form-group">
+                                <input type="hidden"
+                                 class="form-control"
+                                 formControlName="montant"
+                                  name="montant"
+                                  [(ngModel)]="total"
+                                >
+
+                              </div>
+
+                          </div>
+                          <div class="card-footer">
+                            <button type="button"
+                                    class="subscribe btn btn-success btn-block shadow-sm"
+                                    (click)="CardPayment()"> <i>Payez {{total}} Fcfa</i>  </button></div>
+                      </form>
+                  </div>
+              </div> <!-- End -->
+              <!-- Paypal info -->
+
+                  <div *ngIf="Paypal==1 && Carte==0 && Mobil==0 && Mobi==0;" id="paypal" class="paypalClass">
+                      <!--<h6 class="pb-2">Selectionnez le type de compte paypal </h6>
+                      <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> National </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>-->
+                      <br><a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fcgi-bin%2Fwebscr%3fcmd%3d_account" class="btn btn-success"><i>Connectez vous à votre compte Paypal</i></a>
+                      <!--<p> <button type="button" class="btn btn-success "><i class="fab fa-paypal mr-2"></i> Connexion au compte Paypal</button> </p>-->
+                      <!--<p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>-->
+                  </div>
+
+
+
+             <!-- End -->
+              <!-- bank transfer info -->
+
+                <div *ngIf="Mobil==1 && Carte==0 && Paypal==0 && Mobi==0;" id="net-banking" class="mobilClass">
+
+      <form [formGroup]="addForm" novalidate class="form">
+
+                          <div class="alert alert-danger"
+                   *ngIf="addForm.get('numero').hasError('required') && addForm.get('numero').touched">
+                       Votre numero  est obligatoire
+                   </div>
+                   <div class="alert alert-danger" *ngIf="addForm.get('numero').hasError('pattern')">
+                Veuillez respecter le format :11111111 </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Numero</label>
+                            <input type="text"
+                            class="form-control"
+                             id="exampleFormControlInput1"
+                             placeholder="Entrez votre numero"
+                             formControlName="numero"
+                              name="numero"
+                              pattern="^\d{2}\d{2}\d{2}\d{2}$">
+                          </div>
+                          <div class="alert alert-danger"
+            *ngIf="addForm.get('otp').hasError('required') && addForm.get('otp').touched">
+                Le otp est obligatoire
             </div>
-            <div class="col-sm-4">
-                <div class="form-group mb-4">
-                  <label data-toggle="tooltip"
-                         title="Three digit CV code on the back of your card">
-                        <h6>CVV <i class="fa fa-question-circle d-inline"></i>
-                         </h6>
-                    </label> <input type="text"
-                                     name="cvv"
-                                     formControlName="cvv"
-                                     required
-                                     class="form-control">
-                                   </div>
-                        </div>
+            <div class="alert alert-danger" *ngIf="addForm.get('otp').hasError('pattern')">
+                Veuillez respecter le format :111111 </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlInput1">Otp</label>
+                            <input type="text"
+                             class="form-control"
+
+                             placeholder="Entrez le otp "
+                             pattern="^\d{2}\d{2}\d{2}$"
+                             formControlName="otp"
+                              name="otp">
+                          </div>
+
                         <div class="form-group">
                           <input type="hidden"
                            class="form-control"
@@ -150,153 +211,107 @@
 
                         </div>
 
-                    </div>
-                    <div class="card-footer">
-                      <button type="button"
-                              class="subscribe btn btn-success btn-block shadow-sm"
-                              (click)="CardPayment()"> <i>Payez {{total}} Fcfa</i>  </button></div>
-                </form>
-            </div>
-        </div> <!-- End -->
-        <!-- Paypal info -->
-
-            <div *ngIf="Paypal==1 && Carte==0 && Mobil==0 && Mobi==0;" id="paypal" class="paypalClass">
-                <!--<h6 class="pb-2">Selectionnez le type de compte paypal </h6>
-                <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> National </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>-->
-                <br><a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fcgi-bin%2Fwebscr%3fcmd%3d_account" class="btn btn-success"><i>Connectez vous à votre compte Paypal</i></a>
-                <!--<p> <button type="button" class="btn btn-success "><i class="fab fa-paypal mr-2"></i> Connexion au compte Paypal</button> </p>-->
-                <!--<p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>-->
-            </div>
-
-
-
-       <!-- End -->
-        <!-- bank transfer info -->
-
-          <div *ngIf="Mobil==1 && Carte==0 && Paypal==0 && Mobi==0;" id="net-banking" class="mobilClass">
-
-<form [formGroup]="addForm" novalidate class="form">
-
-                    <div class="alert alert-danger"
-             *ngIf="addForm.get('numero').hasError('required') && addForm.get('numero').touched">
-                 Votre numero  est obligatoire
-             </div>
-             <div class="alert alert-danger" *ngIf="addForm.get('numero').hasError('pattern')">
-          Veuillez respecter le format :11111111 </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Numero</label>
-                      <input type="text"
-                      class="form-control"
-                       id="exampleFormControlInput1"
-                       placeholder="Entrez votre numero"
-                       formControlName="numero"
-                        name="numero"
-                        pattern="^\d{2}\d{2}\d{2}\d{2}$">
-                    </div>
-                    <div class="alert alert-danger"
-      *ngIf="addForm.get('otp').hasError('required') && addForm.get('otp').touched">
-          Le otp est obligatoire
-      </div>
-      <div class="alert alert-danger" *ngIf="addForm.get('otp').hasError('pattern')">
-          Veuillez respecter le format :111111 </div>
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Otp</label>
-                      <input type="text"
-                       class="form-control"
-
-                       placeholder="Entrez le otp "
-                       pattern="^\d{2}\d{2}\d{2}$"
-                       formControlName="otp"
-                        name="otp">
-                    </div>
-
-                  <div class="form-group">
-                    <input type="hidden"
-                     class="form-control"
-                     formControlName="montant"
-                      name="montant"
-                      [(ngModel)]="total"
-                    >
-
-                  </div>
-
-<br>
-
-
-              <div class="form-group">
-                 <button type="button"
-                              class="btn btn-success "
-                              (click)="onSubmit()">
-                              <i class="fas fa-mobile-alt mr-2">
-                              Payez {{total}} Fcfa</i>
-                       </button>
-              </div>
-
-              </form>
-              <!--<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
-          </div> <!-- End -->
-          <!-- End -->
-
-      </div>
-
-      <div *ngIf="Mobi==1 && Carte==0 && Paypal==0 && Mobil==0;"  class="mobilClass">
-
-      <form [formGroup]="addForm" novalidate class="form">
-
-                <div class="alert alert-danger"
-         *ngIf="addForm.get('numero').hasError('required') && addForm.get('numero').touched">
-             Votre numero  est obligatoire
-         </div>
-         <div class="alert alert-danger" *ngIf="addForm.get('numero').hasError('pattern')">
-      Veuillez respecter le format :11 11 11 11 </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Numero</label>
-                  <input type="text"
-                  class="form-control"
-                   id="exampleFormControlInput1"
-                   placeholder="Entrez votre numero"
-                   formControlName="numero"
-                    name="numero"
-                    pattern="^\d{2} \d{2} \d{2} \d{2}$">
-                </div>
-
-
-
-
-              <div class="form-group">
-                <input type="hidden"
-                 class="form-control"
-                 formControlName="montant"
-                  name="montant"
-                  [(ngModel)]="total"
-                >
-
-              </div>
-
       <br>
 
 
-          <div class="form-group">
-             <button type="button"
-                          class="btn btn-success "
-                          (click)="onSubmitc()">
-                          <i class="fas fa-mobile-alt mr-2">
-                          Payez {{total}} Fcfa</i>
-                   </button>
-          </div>
+                    <div class="form-group">
+                       <button type="button"
+                                    class="btn btn-success "
+                                    (click)="onSubmit()">
+                                    <i class="fas fa-mobile-alt mr-2">
+                                    Payez {{total}} Fcfa</i>
+                             </button>
+                    </div>
 
-          </form>
-          <!--<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
-      </div> <!-- End -->
-      <!-- End -->
+                    </form>
+                    <!--<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+                </div> <!-- End -->
+                <!-- End -->
 
-      </div>
+            </div>
+
+            <div *ngIf="Mobi==1 && Carte==0 && Paypal==0 && Mobil==0;"  class="mobilClass">
+
+            <form [formGroup]="addForm" novalidate class="form">
+
+                      <div class="alert alert-danger"
+               *ngIf="addForm.get('numero').hasError('required') && addForm.get('numero').touched">
+                   Votre numero  est obligatoire
+               </div>
+               <div class="alert alert-danger" *ngIf="addForm.get('numero').hasError('pattern')">
+            Veuillez respecter le format :11 11 11 11 </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Numero</label>
+                        <input type="text"
+                        class="form-control"
+                         id="exampleFormControlInput1"
+                         placeholder="Entrez votre numero"
+                         formControlName="numero"
+                          name="numero"
+                          pattern="^\d{2} \d{2} \d{2} \d{2}$">
+                      </div>
 
 
-          <h5 class="h5j"><i>Paiement securisé ,fourni par : <a href="https://www.jofedigitale.com/">Jo'Fé Digital</a></i></h5>
-        </div>
 
-          </div>
-          </div>
-      </div>
+
+                    <div class="form-group">
+                      <input type="hidden"
+                       class="form-control"
+                       formControlName="montant"
+                        name="montant"
+                        [(ngModel)]="total"
+                      >
+
+                    </div>
+
+            <br>
+
+
+                <div class="form-group">
+                   <button type="button"
+                                class="btn btn-success "
+                                (click)="onSubmitc()">
+                                <i class="fas fa-mobile-alt mr-2">
+                                Payez {{total}} Fcfa</i>
+                         </button>
+                </div>
+
+                </form>
+                <!--<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+            </div> <!-- End -->
+            <!-- End -->
+
+            </div>
+
+
+                <h5 class="h5j"><i>Paiement securisé ,fourni par : <a href="https://www.jofedigitale.com/">Jo'Fé Digital</a></i></h5>
+              </div>
+
+                </div>
+
+
+                </div>
+            </div></td>
+            <td>
+              <div *ngIf="notification==true " class="notification">
+                <div *ngIf="Message_type=='succès' " class="alert alert-success" role="alert" id="s">
+                Paiement effectué avec succès!
+              </div>
+              <div *ngIf="Message_type=='invalide'" class="alert alert-danger" role="alert" id="i">
+              Paiement non effectué, OTP invalide!
+              </div>
+              <div *ngIf="Message_type=='non trouvé' " class="alert alert-danger" role="alert" id="nt">
+              Paiement non effectué, numero incorrect ou non compatible avec le OTP!
+              </div>
+              <div *ngIf="Message_type=='utilisé'" class="alert alert-danger" role="alert" id="u">
+              Paiement non effectué, OTP deja utilisé!
+              </div>
+              <div *ngIf="Message_type=='echec de connexion'" class="alert alert-danger" role="alert" id="u">
+              Echec de connexion!
+              </div>
+              </div>
+            </td>
+      </tr>
+    </table>
+
       </div>

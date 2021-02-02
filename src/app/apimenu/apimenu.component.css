@@ -7,26 +7,29 @@
 .nav-pills .nav-link {
     color: #555;
 }
+.notification{
+
+}
 
 .nav-pills .nav-link.active {
     color: white;
 }
 #i {
-  animation: cssAnimation 0s 5s forwards;
+  animation: cssAnimation 0s 7s forwards;
   visibility: visible;
 }
 #s {
-  animation: cssAnimation 0s 5s forwards;
+  animation: cssAnimation 0s 7s forwards;
   visibility: visible;
 }
 #u {
-  animation: cssAnimation 0s 5s forwards;
+  animation: cssAnimation 0s 7s forwards;
   visibility: visible;
 }
 
 #nt {
 
-  animation: cssAnimation 0s 5s forwards;
+  animation: cssAnimation 0s 7s forwards;
   visibility: visible;
 }
 

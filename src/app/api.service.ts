@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 rsp:any
+responseMessage:string
   constructor(private http:HttpClient) { }
     getApi(){
       return this.http.get(API_URLS.Api_URLS);
@@ -39,17 +40,14 @@ rsp:any
        return this.http.post(API_URLS.lien+'/payment',
       body,{
         headers:headers
-      }).subscribe((res:Response)=>{
-        this.rsp=res;
-        //console.log(this.rsp)
-      }
-      );
+      });
+
 
 
     }
-    res(){
+    /*res(){
       return this.rsp;
-    }
+    }*/
     sendPostRequestCard(username:string,cardNumber:string,dateexM:number,dateexY:number,cvv:string,montant:number){
 
       let headers = new HttpHeaders();
