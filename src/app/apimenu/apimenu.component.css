@@ -10,6 +10,20 @@
 .notification{
 
 }
+.logo{
+  border-radius: 20px;
+  border: 4px double #cccccc;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+}
+.jofe_image{
+  border-radius: 20px;
+  border: 4px double #cccccc;
+  width: 80px;
+  height: 80px;
+  margin-left: 160px;
+}
 
 .nav-pills .nav-link.active {
     color: white;
@@ -30,6 +44,21 @@
 #nt {
 
   animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
+#exi {
+
+  animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
+#ech {
+
+  animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
+#mon {
+
+  animation: cssAnimation 0s 9s forwards;
   visibility: visible;
 }
 

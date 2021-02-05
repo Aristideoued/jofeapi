@@ -45,6 +45,24 @@ responseMessage:string
 
 
     }
+
+    sendPostRequestMoov(phone:string,montant:number,url:string){
+      let headers = new HttpHeaders();
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          const body = JSON.stringify(
+            {phone: phone,
+
+             montant:montant,
+             url:url
+           });
+       return this.http.post(API_URLS.lien+'/paymentMoov',
+      body,{
+        headers:headers
+      });
+
+
+
+    }
     /*res(){
       return this.rsp;
     }*/

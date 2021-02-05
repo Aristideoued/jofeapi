@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { NgModel } from '@angular/forms';
+
 import{FormBuilder,FormGroup,Validators} from '@angular/forms'
 
 @Component({
@@ -19,12 +20,19 @@ paypal_image:any="../assets/images/Paypal.png"
 mobil_image:any="../assets/images/om.png"
 visa_image:any="../assets/images/visa.png"
 m_image:any="../assets/images/moov.png"
+jofe:any="../assets/images/jofelogo.jpg"
 Message_type:string;
+Message_typeMoov:string;
 rps:any;
+rpsMoov:any;
 notification:boolean=false;
+bol:string;
+notificationMoov:boolean=false;
 total:number;
 phone:string;
+phoneMoov:string;
 montant:number;
+montantMoov:number;
 otp:string;
 api:Api[];
 responseT:string;
@@ -34,8 +42,10 @@ Paypal:number;
 Mobi:number;
 isClicked:boolean ;
 url:string;
+urlMoov:string;
 xmls:Observable<string>;
 result:any;
+resultMoov:any;
 
 
 constructor(private formBuilder:FormBuilder,
@@ -44,15 +54,11 @@ constructor(private formBuilder:FormBuilder,
 
 }
  addForm:FormGroup;
+ addFormMoov:FormGroup;
  addForm2:FormGroup;
   ngOnInit(): void {
-this.total=100;
-this.Message_type="";
-this.addForm=this.formBuilder.group({
-numero:['',[Validators.required,Validators.maxLength(8)]],
-otp:['',[Validators.required,Validators.maxLength(6)]],
-montant:['',[Validators.required]]
-});
+  this.initFormOM()
+
 this.addForm2=this.formBuilder.group({
 username:['',[Validators.required]],
 cardNumber:['',[Validators.required]],
@@ -62,11 +68,30 @@ cvv:['',[Validators.required]],
 montant:['',[Validators.required]]
 
 });
+this.addFormMoov=this.formBuilder.group({
+
+numero:['',[Validators.required]],
+montant:['',[Validators.required]]
+
+});
 
 this._apiService.getApi().subscribe((data:Api[])=>{
        this.api=data;
 
       });
+
+
+  }
+
+  initFormOM(){
+    this.total=100;
+    this.Message_type="";
+    //console.log(this.Message_type)
+    this.addForm=this.formBuilder.group({
+    numero:['',[Validators.required,Validators.maxLength(8)]],
+    otp:['',[Validators.required,Validators.maxLength(6)]],
+    //montant:['',[Validators.required]]
+    });
 
 
   }
@@ -91,6 +116,16 @@ Mobic(){
   this.Mobi=1;
   return this.Mobi;
 }
+
+resetF(){
+  this.addForm.reset();
+
+
+  this.Message_type=" "
+  this.notification=false
+  this.bol=""
+}
+
 Paypals(){
 
   this.Mobil=0;
@@ -111,57 +146,47 @@ onSubmit(){
   console.log(this.addForm.value);
   this.phone=this.addForm.value.numero;
   this.otp=this.addForm.value.otp;
-  this.montant=this.addForm.value.montant;
+  //this.montant=this.addForm.value.montant;
 
-  this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.montant,this.url).subscribe((res:Response)=>{
+  this.result=this._apiService.sendPostRequest(this.phone,this.otp,this.total,this.url).subscribe((res:Response)=>{
     this.rps=res;
     this.Message_type=this.rps.Message
     this.notification=true;
+
     console.log(this.Message_type)
+    if(this.Message_type.indexOf("succes")!==-1){
+      this.Message_type="Paiement effectué avec succès"
+      this.bol="s"
+    }
+    else{
+      this.bol="e";
+    }
+    //this.addForm.reset()
   }
   );
-
-
-  //console.log(this.result);
-
-  /*if(this.rps.Message=="succès"){
-    this.Message_type="s"
-    this.notification=true;
-  }
-  else if(this.rps.Message=="utilisé"){
-    this.Message_type="u";
-    this.notification=true;
-    //alert("Paiement non effectué , OTP deja utilisé")
-  }
-  else if(this.rps.Message=="non trouvé"){
-    this.Message_type="nt";
-    this.notification=true;
-    //alert("Paiement non effectué, numero incorrect ou non compatible avec le OTP")
-  }
-  else if(this.rps.Message=="invalide"){
-    this.Message_type="i";
-    this.notification=true;
-
-  }
-  else if(this.rps.Message=="Echec de connexion"){
-      this.Message_type="c";
-      this.notification=true;
-  }*/
-
-    return this.Message_type;
+    //return this.Message_type;
 
 //console.log(this.Message_type)
-
+//window.location.reload(false);
+this.bol=""
 }
+  onSubmitMoov(){
+    this.urlMoov= "https://<IPAddress>:<Port>/api/gateway/3pp/transaction/process/";
+    console.log(this.addFormMoov.value);
 
+    this.montantMoov=this.addFormMoov.value.montant;
+    this.phoneMoov=this.addFormMoov.value.numero;
+    this.resultMoov=this._apiService.sendPostRequestMoov(this.phoneMoov,this.montantMoov,this.urlMoov).subscribe((res:Response)=>{
+      this.rpsMoov=res;
+      this.Message_typeMoov=this.rpsMoov.Message
+      this.notificationMoov=true;
+      //console.log(this.Message_type)
+    }
+    );
+      //return this.Message_typeMoov;
 
+  //console.log(this.Message_type)
 
-
-
-
-
-  onSubmitc(){
-    console.log(this.addForm.value);
 
     }
   CardPayment(){
