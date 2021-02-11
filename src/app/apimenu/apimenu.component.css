@@ -148,9 +148,21 @@ label{
   width: 50px;
   height: 30px;
 }
-.mobil_image{
-  width: 95px;
-  height: 48px;
+.mobil_image1{
+  width: 90px;
+  height: 55px;
+}
+.mobil_image2{
+  width: 90px;
+  height: 55px;
+}
+.mobil_image3{
+  width: 90px;
+  height: 55px;
+}
+.mobil_image4{
+  width: 65px;
+  height: 55px;
 }
 .paypal_image{
   width: 50px;
@@ -160,8 +172,8 @@ label{
 
 }
 
-.btns{
-  background-color: #DC3545;
+.btns1{
+  background-color: white;
   display: inline-block;
 
 border-radius: 10px;
@@ -178,6 +190,72 @@ transition: all 0.5s;
 cursor: pointer;
 
 }
-.btns:hover {
-    background-color: blue;
+
+.btns2{
+  background-color: white;
+  display: inline-block;
+
+border-radius: 10px;
+border: 4px double #cccccc;
+color: #eeeeee;
+
+font-size: 30px;
+padding: 4px;
+width: 110px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+cursor: pointer;
+
+}
+
+.btns3{
+  background-color: white;
+  display: inline-block;
+
+border-radius: 10px;
+border: 4px double #cccccc;
+color: #eeeeee;
+
+font-size: 30px;
+padding: 4px;
+width: 110px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+cursor: pointer;
+
+}
+
+.btns4{
+  background-color: white;
+  display: inline-block;
+
+border-radius: 10px;
+border: 4px double #cccccc;
+color: #eeeeee;
+
+font-size: 30px;
+padding: 4px;
+width: 110px;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+cursor: pointer;
+
+}
+.btns1:hover {
+    background-color: green;
   }
+.btns2:hover {
+      background-color: green;
+    }
+.btns3:hover {
+        background-color: green;
+      }
+.btns4:hover {
+          background-color: green;
+        }

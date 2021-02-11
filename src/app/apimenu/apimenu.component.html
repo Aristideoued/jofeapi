@@ -33,19 +33,19 @@
                       class="nav bg-light nav-pills rounded nav-fill mb-3">
                       <li class="nav-item">
                         <!--<a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> -->
-                      <button class="btns "
+                      <button class="btns1 "
                                type="button"
                                name="button"
                                (click)="Cartes()">
                                <img [src]="visa_image"
-                               class="mobil_image"/></button></li>
+                               class="mobil_image1"/></button></li>
                                <li class="nav-item">
-                                 <button class="btns "
+                                 <button class="btns2 "
                                          type="button"
                                          name="button"
                                          (click)="Mobils()">
                                          <img [src]="mobil_image"
-                                         class="mobil_image"/></button>
+                                         class="mobil_image2"/></button>
                                  <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
 
 
@@ -55,20 +55,20 @@
                       class="nav bg-light nav-pills rounded nav-fill mb-6">
                       <li class="nav-item">
                         <!--<a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a>-->
-                        <button class="btns "
+                        <button class="btns3 "
                                 type="button"
                                 name="button"
                                 (click)="Paypals()">
                                 <img [src]="paypal_image"
-                                class="mobil_image"/></button></li>
+                                class="mobil_image3"/></button></li>
 
                       <li class="nav-item">
-                        <button class="btns "
+                        <button class="btns4 "
                                 type="button"
                                 name="button"
                                 (click)="Mobic()" >
-                                <img [src]="m_image"
-                                class="mobil_image"/></button>
+                                <img [src]="moov"
+                                class="mobil_image4"/></button>
                         <!--<a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Mobil </a>--> </li>
 
                       </ul>
@@ -280,7 +280,9 @@
                     </div>
 
             <br>
-
+            <div *ngIf="bolMoov=='e'" class="alert alert-danger" role="alert" id="i">
+              {{Message_typeMoov}}
+            </div>
 
                 <div class="form-group">
                    <button type="button"
@@ -296,6 +298,7 @@
                 <!--<p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
             </div> <!-- End -->
             <!-- End -->
+
 
             </div>
 

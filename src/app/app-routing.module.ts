@@ -6,7 +6,8 @@ import{ReactiveFormsModule} from '@angular/forms';
 import { ViewapiComponent } from './viewapi/viewapi.component';
 import { ApiComponent } from './api/api.component';
 import { ApimenuComponent } from './apimenu/apimenu.component';
-
+import { TraceComponent } from './trace/trace.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -18,7 +19,13 @@ const routes: Routes = [
       {     path:'apimenu',
             component:ApimenuComponent
           },
-        
+          {     path:'traces',
+                component:TraceComponent
+              },
+              {     path:'admin',
+                    component:LoginComponent
+                  },
+
 
 
   {     path:'viewapi',
@@ -27,7 +34,7 @@ const routes: Routes = [
 
         {
           path:'',
-          redirectTo:'/viewapi',
+          redirectTo:'/admin',
           pathMatch:'full'
         }
 

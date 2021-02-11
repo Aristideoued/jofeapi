@@ -1,0 +1,19 @@
+.resume{
+  align-content: center;
+  height: 100px;
+  width: 300px;
+
+}
+.corps{
+  margin-left: 200px;
+}
+.info{
+  background-color: #7FFFD4;
+}
+.ligne{
+  width: 300px;
+}
+.tb{
+height: 120px;
+width: 400px;
+}

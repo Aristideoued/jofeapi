@@ -15,6 +15,8 @@ import { ViewapiComponent } from './viewapi/viewapi.component';
 import { ApimenuComponent } from './apimenu/apimenu.component';
 import { NgxStripeModule } from '@nomadreservations/ngx-stripe';
 import { PaymentComponent } from './payment/payment.component';
+import { TraceComponent } from './trace/trace.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -26,6 +28,8 @@ import { PaymentComponent } from './payment/payment.component';
     ViewapiComponent,
     ApimenuComponent,
     PaymentComponent,
+    TraceComponent,
+    LoginComponent,
 
 
   ],

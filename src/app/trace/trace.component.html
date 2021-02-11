@@ -1,0 +1,27 @@
+<br><br>
+<div class="corps">
+
+<h2>Historique des paiements</h2>
+<table class="tb" border="3">
+  <tr class="info">
+
+    <td class=" text-center">Numero</td>
+    <td class=" text-center">Montant</td>
+      <td class=" text-center">Date</td>
+
+
+  </tr>
+
+  <tr class="ligne" *ngFor="let tr of trace">
+    <td class=" text-center">{{tr.numero}}</td>
+    <td class=" text-center">{{tr.montant}}</td>
+    <td class=" text-center">{{tr.created_at}}</td>
+
+
+</tr>
+</table>
+<br><br>
+
+
+
+</div>

@@ -5,6 +5,7 @@ const PATH='/jofeapi';
 export const API_URLS={
   lien:BASE+':'+ PORT+PATH,
   Api_URLS:BASE+':'+ PORT+PATH+'/apis',
+  Trace_URLS:BASE+':'+ PORT+PATH+'/traces',
   Create_urls:BASE+':'+ PORT+PATH+'apis',
   GetById_url:BASE+':'+ PORT+PATH+'/apis/{id}',
   Update_url:BASE+':'+ PORT+PATH+'apis/{id}',

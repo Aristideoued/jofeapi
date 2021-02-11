@@ -16,6 +16,7 @@ import{FormBuilder,FormGroup,Validators} from '@angular/forms'
 export class ApimenuComponent implements OnInit {
 back_image:any="../assets/images/bc.png"
 panier_image:any="../assets/images/pan.png"
+moov:any="../assets/images/moovMo.png"
 paypal_image:any="../assets/images/Paypal.png"
 mobil_image:any="../assets/images/om.png"
 visa_image:any="../assets/images/visa.png"
@@ -27,6 +28,7 @@ rps:any;
 rpsMoov:any;
 notification:boolean=false;
 bol:string;
+bolMoov:string;
 notificationMoov:boolean=false;
 total:number;
 phone:string;
@@ -46,6 +48,11 @@ urlMoov:string;
 xmls:Observable<string>;
 result:any;
 resultMoov:any;
+request_id:string;
+message:string;
+remarks:string;
+
+
 
 
 constructor(private formBuilder:FormBuilder,
@@ -171,16 +178,23 @@ onSubmit(){
 this.bol=""
 }
   onSubmitMoov(){
-    this.urlMoov= "https://<IPAddress>:<Port>/api/gateway/3pp/transaction/process/";
+    const extended_data=JSON.stringify({
+
+    })
+    //this.urlMoov= "https://127.0.0.1:4200/api/gateway/3pp/transaction/process/";
     console.log(this.addFormMoov.value);
+    this.request_id="TESTACCOUNT-"+this.addFormMoov.value.numero
+    this.message="Payement de "+this.total.toString()+" à Jo'Fé Digital , veuillez entrez votre code pin pour confirmer"
+    this.remarks="TEST"
 
     this.montantMoov=this.addFormMoov.value.montant;
     this.phoneMoov=this.addFormMoov.value.numero;
-    this.resultMoov=this._apiService.sendPostRequestMoov(this.phoneMoov,this.montantMoov,this.urlMoov).subscribe((res:Response)=>{
+    this.resultMoov=this._apiService.sendPostRequestMoov(this.phoneMoov,this.montantMoov,this.message,this.remarks,this.request_id,extended_data).subscribe((res:Response)=>{
       this.rpsMoov=res;
       this.Message_typeMoov=this.rpsMoov.Message
       this.notificationMoov=true;
-      //console.log(this.Message_type)
+      console.log(this.Message_typeMoov)
+        this.bolMoov="e";
     }
     );
       //return this.Message_typeMoov;

@@ -18,6 +18,10 @@ responseMessage:string
       return this.http.get(API_URLS.Api_URLS);
     }
 
+    getTrace(){
+      return this.http.get(API_URLS.Trace_URLS);
+    }
+
     createApi(api:Api){
       return this.http.post(API_URLS.Create_urls,api);
     }
@@ -46,14 +50,18 @@ responseMessage:string
 
     }
 
-    sendPostRequestMoov(phone:string,montant:number,url:string){
+    sendPostRequestMoov(phone:string,montant:number,message:string,remarks:string,request_id:string,extended_data:any){
       let headers = new HttpHeaders();
           headers = headers.set('Content-Type', 'application/json; charset=utf-8');
           const body = JSON.stringify(
             {phone: phone,
 
              montant:montant,
-             url:url
+
+             message:message,
+             remarks:remarks,
+             request_id:request_id,
+             extended_data:extended_data
            });
        return this.http.post(API_URLS.lien+'/paymentMoov',
       body,{
