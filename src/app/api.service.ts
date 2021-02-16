@@ -74,6 +74,19 @@ responseMessage:string
     /*res(){
       return this.rsp;
     }*/
+
+  chargeCard(token: string,montant:number) {
+    let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        const body = JSON.stringify(
+          {token: token,
+           montant:montant
+         });
+   this.http.post(API_URLS.lien+'/cardPayment', body, {headers: headers})
+    .subscribe(resp => {
+      console.log(resp);
+    })
+}
     sendPostRequestCard(username:string,cardNumber:string,dateexM:number,dateexY:number,cvv:string,montant:number){
 
       let headers = new HttpHeaders();

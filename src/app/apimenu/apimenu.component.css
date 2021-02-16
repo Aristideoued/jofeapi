@@ -32,6 +32,18 @@
   animation: cssAnimation 0s 7s forwards;
   visibility: visible;
 }
+#iCards {
+  animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
+#iCard {
+  animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
+#iMoov{
+  animation: cssAnimation 0s 7s forwards;
+  visibility: visible;
+}
 #s {
   animation: cssAnimation 0s 7s forwards;
   visibility: visible;

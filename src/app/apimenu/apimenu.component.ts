@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ApiService} from '../api.service';
+import {render  } from "creditcardpayments/creditCardPayments";
 import{Api} from '../api';
 import { Observable } from 'rxjs';
 import { Router } from "@angular/router";
@@ -29,6 +30,8 @@ rpsMoov:any;
 notification:boolean=false;
 bol:string;
 bolMoov:string;
+bolCard:string;
+Message_typeCard:string;
 notificationMoov:boolean=false;
 total:number;
 phone:string;
@@ -58,12 +61,15 @@ remarks:string;
 constructor(private formBuilder:FormBuilder,
           private _apiService:ApiService,
           private router:Router) {
+          
 
 }
  addForm:FormGroup;
  addFormMoov:FormGroup;
  addForm2:FormGroup;
   ngOnInit(): void {
+
+
   this.initFormOM()
 
 this.addForm2=this.formBuilder.group({
@@ -124,6 +130,10 @@ Mobic(){
   return this.Mobi;
 }
 
+/*paypal(){
+   this.router.navigate(['paypal'])
+}
+*/
 resetF(){
   this.addForm.reset();
 
@@ -139,7 +149,18 @@ Paypals(){
   this.Mobi=0;
   this.Carte=0;
   this.Paypal=1;
+  /*render(
+          {
+            id:"#myPaypalButtons",
+            currency:"USD",
+            value:"100.00",
+            onApprove:(details)=>{
+              alert("Paiement effectué avec succès")
+            }
+          }
+        )*/
   return this.Paypal;
+
 }
 Cartes(){
   this.Mobi=0;
@@ -204,7 +225,25 @@ this.bol=""
 
     }
   CardPayment(){
-      console.log(this.addForm2.value);
-        this.result=this._apiService.sendPostRequestCard(this.addForm2.value.username,this.addForm2.value.cardNumber,this.addForm2.value.dateexM,this.addForm2.value.dateexY,this.addForm2.value.cvv,this.addForm2.value.montant);
+      //console.log(this.addForm2.value);
+      //  this.result=this._apiService.sendPostRequestCard(this.addForm2.value.username,this.addForm2.value.cardNumber,this.addForm2.value.dateexM,this.addForm2.value.dateexY,this.addForm2.value.cvv,this.addForm2.value.montant);
+        (<any>window).Stripe.card.createToken({
+    //username:this.addForm2.value.username,
+    number: this.addForm2.value.cardNumber,
+    exp_month: this.addForm2.value.dateexM,
+    exp_year:   this.addForm2.value.dateexY,
+    cvc: this.addForm2.value.cvv
+  }, (status: number, response: any) => {
+    if (status === 200) {
+      let token = response.id;
+      this._apiService.chargeCard(token,this.total);
+    this.bolCard="s";
+    this.Message_typeCard="Paiement effectué avec succès"
+    } else {
+      this.bolCard="e";
+      this.Message_typeCard="Echec de paiement"
+      console.log(response.error.message);
+    }
+  });
     }
 }

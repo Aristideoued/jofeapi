@@ -54,13 +54,17 @@
                   <ul role="tablist"
                       class="nav bg-light nav-pills rounded nav-fill mb-6">
                       <li class="nav-item">
+                      <!--  <a [routerLink]="['/paypal']" class="btns3 ">  <img [src]="paypal_image"
+                          class="mobil_image3"/></a>-->
                         <!--<a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a>-->
                         <button class="btns3 "
                                 type="button"
                                 name="button"
                                 (click)="Paypals()">
                                 <img [src]="paypal_image"
-                                class="mobil_image3"/></button></li>
+                                class="mobil_image3"/></button>
+
+                              </li>
 
                       <li class="nav-item">
                         <button class="btns4 "
@@ -154,10 +158,14 @@
               </div> <!-- End -->
               <!-- Paypal info -->
 
-                  <div *ngIf="Paypal==1 && Carte==0 && Mobil==0 && Mobi==0;" id="paypal" class="paypalClass">
+          <div *ngIf="Paypal==1 && Carte==0 && Mobil==0 && Mobi==0;" id="paypal" class="paypalClass">
+            <br>
+            <!--<div id="myPaypalButtons">
+
+              </div>-->
                       <!--<h6 class="pb-2">Selectionnez le type de compte paypal </h6>
                       <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> National </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>-->
-                      <br><a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fcgi-bin%2Fwebscr%3fcmd%3d_account" class="btn btn-success"><i>Connectez vous à votre compte Paypal</i></a>
+                      <!--<br><a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fcgi-bin%2Fwebscr%3fcmd%3d_account" class="btn btn-success"><i>Connectez vous à votre compte Paypal</i></a>-->
                       <!--<p> <button type="button" class="btn btn-success "><i class="fab fa-paypal mr-2"></i> Connexion au compte Paypal</button> </p>-->
                       <!--<p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>-->
                   </div>
@@ -280,9 +288,7 @@
                     </div>
 
             <br>
-            <div *ngIf="bolMoov=='e'" class="alert alert-danger" role="alert" id="i">
-              {{Message_typeMoov}}
-            </div>
+
 
                 <div class="form-group">
                    <button type="button"
@@ -318,6 +324,15 @@
               </div>
               <div *ngIf="bol=='e'" class="alert alert-danger" role="alert" id="i">
                 {{Message_type}}
+              </div>
+              <div *ngIf="bolMoov=='e'" class="alert alert-danger" role="alert" id="iMoov">
+                {{Message_typeMoov}}
+              </div>
+              <div *ngIf="bolCard=='e'" class="alert alert-danger" role="alert" id="iCard">
+                {{Message_typeCard}}
+              </div>
+              <div *ngIf="bolCard=='s'" class="alert alert-success" role="alert" id="iCards">
+                {{Message_typeCard}}
               </div>
 
             <!--  </div>-->

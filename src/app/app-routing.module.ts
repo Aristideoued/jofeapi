@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 
 
 
+
 const routes: Routes = [
 
   {     path:'api',
@@ -30,7 +31,7 @@ const routes: Routes = [
 
   {     path:'viewapi',
         component:ViewapiComponent},
-
+      
 
         {
           path:'',

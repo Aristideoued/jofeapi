@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
     PaymentComponent,
     TraceComponent,
     LoginComponent,
+  
 
 
   ],
@@ -44,7 +46,7 @@ import { LoginComponent } from './login/login.component';
   NgxStripeModule.forRoot('')
 
   ],
-  providers: [ApiService],
+  providers: [ApiService,ApimenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
