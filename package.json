@@ -11,12 +11,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "~9.1.4",
-    "@angular/compiler-cli": "~9.1.4",
     "@angular/animations": "^9.1.13",
     "@angular/cdk": "^11.0.4",
+    "@angular/cli": "~9.1.4",
     "@angular/common": "~9.1.4",
     "@angular/compiler": "~9.1.4",
+    "@angular/compiler-cli": "~9.1.4",
     "@angular/core": "~9.1.4",
     "@angular/forms": "~9.1.4",
     "@angular/material": "^11.0.4",
@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.4",
-
     "@angular/language-service": "~9.1.4",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -57,7 +56,7 @@
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   },
-  "engines":{
+  "engines": {
     "npm": "7.5.4",
     "node": "14.15.1"
   }
